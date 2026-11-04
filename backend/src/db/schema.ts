@@ -36,3 +36,42 @@ export const product_specsTable = pgTable("product_specs", {
     specKey: varchar({ length: 255 }).notNull(),
     specValue: varchar({ length: 255 }).notNull(),
 })
+export const cartTable = pgTable("cart", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    user_id: integer().notNull().references(() => usersTable.id).unique(),
+createdAt: timestamp().notNull().defaultNow(), })
+
+
+export const cartItemsTable = pgTable("cart_items", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    cart_id: integer().notNull().references(() => cartTable.id),
+    product_id: integer().notNull().references(() => productsTable.id),
+     quantity: integer().notNull().default(1),
+    createdAt: timestamp().notNull().defaultNow(),
+})
+
+export const ordersTable = pgTable("orders", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    user_id: integer().notNull().references(() => usersTable.id),
+    total_amount: numeric({ precision: 10, scale: 2 }).notNull(),
+    status: varchar({ length: 50 }).notNull().default('pending'),
+    createdAt: timestamp().notNull().defaultNow(),
+})
+
+export const orderItemsTable = pgTable("order_items", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    order_id: integer().notNull().references(() => ordersTable.id),
+    product_id: integer().notNull().references(() => productsTable.id),
+    quantity: integer().notNull().default(1),
+    unit_price: numeric({ precision: 10, scale: 2 }).notNull(),
+    createdAt: timestamp().notNull().defaultNow(),
+})
+
+export const paymentsTable = pgTable("payments", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    order_id: integer().notNull().references(() => ordersTable.id),
+    amount: numeric({ precision: 10, scale: 2 }).notNull(),
+    payment_method: varchar({ length: 50 }).notNull(),
+    status: varchar({ length: 50 }).notNull().default('pending'),
+    createdAt: timestamp().notNull().defaultNow(),
+})

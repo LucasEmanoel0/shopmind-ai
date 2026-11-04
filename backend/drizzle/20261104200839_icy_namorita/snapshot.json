@@ -1,0 +1,385 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "d4bbeef5-9c83-4d00-8d39-c9d47a846057",
+  "prevIds": [
+    "356d5f68-888c-4283-846e-cff9ef969a15"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "cart_items"
+      ],
+      "writes": [
+        "s|tbl|public.cart_items",
+        "n|tbl|public.cart_items",
+        "e|tbl|public.cart_items",
+        "n|rel|public.cart_items",
+        "n|type|public.cart_items",
+        "n|rel|public.cart_items_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "cart"
+      ],
+      "writes": [
+        "s|tbl|public.cart",
+        "n|tbl|public.cart",
+        "e|tbl|public.cart",
+        "n|rel|public.cart",
+        "n|type|public.cart",
+        "n|rel|public.cart_pkey",
+        "n|rel|public.cart_user_id_key"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "cart_items"
+      ],
+      "writes": [
+        "s|fk|public.cart_items.cart_items_cart_id_cart_id_fkey",
+        "n|fk|public.cart_items.cart_items_cart_id_cart_id_fkey",
+        "e|fk|public.cart_items.cart_items_cart_id_cart_id_fkey",
+        "n|con|public.cart_items.cart_items_cart_id_cart_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.cart_items",
+        "n|sch|public",
+        "n|tbl|public.cart",
+        "n|sch|public",
+        "n|col|public.cart_items.cart_id",
+        "n|col|public.cart.id",
+        "e|uniqueness|public.cart.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "cart_items"
+      ],
+      "writes": [
+        "s|fk|public.cart_items.cart_items_product_id_products_id_fkey",
+        "n|fk|public.cart_items.cart_items_product_id_products_id_fkey",
+        "e|fk|public.cart_items.cart_items_product_id_products_id_fkey",
+        "n|con|public.cart_items.cart_items_product_id_products_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.cart_items",
+        "n|sch|public",
+        "n|tbl|public.products",
+        "n|sch|public",
+        "n|col|public.cart_items.product_id",
+        "n|col|public.products.id",
+        "e|uniqueness|public.products.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "cart"
+      ],
+      "writes": [
+        "s|fk|public.cart.cart_user_id_users_id_fkey",
+        "n|fk|public.cart.cart_user_id_users_id_fkey",
+        "e|fk|public.cart.cart_user_id_users_id_fkey",
+        "n|con|public.cart.cart_user_id_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.cart",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.cart.user_id",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "cart_items",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "cart",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": {
+          "type": "always",
+          "name": "cart_items_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "2147483647",
+          "cache": 1,
+          "cycle": false
+        },
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "cart_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "product_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "quantity",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "1",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "createdAt",
+        "type": "timestamp",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": {
+          "type": "always",
+          "name": "cart_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "2147483647",
+          "cache": 1,
+          "cycle": false
+        },
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "user_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "createdAt",
+        "type": "timestamp",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "cart_items_cart_id_cart_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "cart_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "cart",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "cart_items_product_id_products_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "product_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "products",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "cart_user_id_users_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "user_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "users",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart_items",
+        "name": "cart_items_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "cart_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "cart",
+        "name": "cart_user_id_key",
+        "nameExplicit": false,
+        "columns": [
+          "user_id"
+        ],
+        "nullsNotDistinct": false,
+        "entityType": "uniques"
+      }
+    }
+  ]
+}
