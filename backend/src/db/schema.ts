@@ -75,3 +75,18 @@ export const paymentsTable = pgTable("payments", {
     status: varchar({ length: 50 }).notNull().default('pending'),
     createdAt: timestamp().notNull().defaultNow(),
 })
+
+export const pcBuildsTable = pgTable("pc_builds", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    user_id: integer().notNull().references(() => usersTable.id),
+    name: varchar({ length: 255 }).notNull(),
+    createdAt: timestamp().notNull().defaultNow(),
+})
+
+export const pcBuildItemsTable = pgTable("pc_build_items", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    pc_build_id: integer().notNull().references(() => pcBuildsTable.id),
+    product_id: integer().notNull().references(() => productsTable.id),
+    quantity: integer().notNull().default(1),
+    createdAt: timestamp().notNull().defaultNow(),
+})

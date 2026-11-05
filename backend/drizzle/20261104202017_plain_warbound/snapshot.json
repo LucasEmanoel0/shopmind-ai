@@ -1,0 +1,386 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "8308b70e-75fc-4fa8-9bfd-8250390f3862",
+  "prevIds": [
+    "f1406ce3-f817-4f16-bae8-13053584a75b"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "pc_build_items"
+      ],
+      "writes": [
+        "s|tbl|public.pc_build_items",
+        "n|tbl|public.pc_build_items",
+        "e|tbl|public.pc_build_items",
+        "n|rel|public.pc_build_items",
+        "n|type|public.pc_build_items",
+        "n|rel|public.pc_build_items_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "pc_builds"
+      ],
+      "writes": [
+        "s|tbl|public.pc_builds",
+        "n|tbl|public.pc_builds",
+        "e|tbl|public.pc_builds",
+        "n|rel|public.pc_builds",
+        "n|type|public.pc_builds",
+        "n|rel|public.pc_builds_pkey"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "pc_build_items"
+      ],
+      "writes": [
+        "s|fk|public.pc_build_items.pc_build_items_pc_build_id_pc_builds_id_fkey",
+        "n|fk|public.pc_build_items.pc_build_items_pc_build_id_pc_builds_id_fkey",
+        "e|fk|public.pc_build_items.pc_build_items_pc_build_id_pc_builds_id_fkey",
+        "n|con|public.pc_build_items.pc_build_items_pc_build_id_pc_builds_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.pc_build_items",
+        "n|sch|public",
+        "n|tbl|public.pc_builds",
+        "n|sch|public",
+        "n|col|public.pc_build_items.pc_build_id",
+        "n|col|public.pc_builds.id",
+        "e|uniqueness|public.pc_builds.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "pc_build_items"
+      ],
+      "writes": [
+        "s|fk|public.pc_build_items.pc_build_items_product_id_products_id_fkey",
+        "n|fk|public.pc_build_items.pc_build_items_product_id_products_id_fkey",
+        "e|fk|public.pc_build_items.pc_build_items_product_id_products_id_fkey",
+        "n|con|public.pc_build_items.pc_build_items_product_id_products_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.pc_build_items",
+        "n|sch|public",
+        "n|tbl|public.products",
+        "n|sch|public",
+        "n|col|public.pc_build_items.product_id",
+        "n|col|public.products.id",
+        "e|uniqueness|public.products.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "pc_builds"
+      ],
+      "writes": [
+        "s|fk|public.pc_builds.pc_builds_user_id_users_id_fkey",
+        "n|fk|public.pc_builds.pc_builds_user_id_users_id_fkey",
+        "e|fk|public.pc_builds.pc_builds_user_id_users_id_fkey",
+        "n|con|public.pc_builds.pc_builds_user_id_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.pc_builds",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.pc_builds.user_id",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "pc_build_items",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "pc_builds",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": {
+          "type": "always",
+          "name": "pc_build_items_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "2147483647",
+          "cache": 1,
+          "cycle": false
+        },
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "pc_build_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "product_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "quantity",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "1",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "createdAt",
+        "type": "timestamp",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": {
+          "type": "always",
+          "name": "pc_builds_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "2147483647",
+          "cache": 1,
+          "cycle": false
+        },
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "user_id",
+        "type": "integer",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "name",
+        "type": "varchar(255)",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "createdAt",
+        "type": "timestamp",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "pc_build_items_pc_build_id_pc_builds_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "pc_build_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "pc_builds",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "pc_build_items_product_id_products_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "product_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "products",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "pc_builds_user_id_users_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "user_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "users",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "NO ACTION",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_build_items",
+        "name": "pc_build_items_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "pc_builds",
+        "name": "pc_builds_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    }
+  ]
+}
